@@ -64,6 +64,37 @@ RSpec.describe KType::NamedFolders do
         # May want to support :default or :root here
         it { is_expected.to include(app: target_folder) }
 
+        context ':when duplicate named folder' do
+          before do
+            instance.add(:app, target_folder)
+            instance.add(:app, target_folder)
+          end
+
+          subject { instance.folders }
+
+          it do
+            is_expected
+              .to  include(app: target_folder)
+              .and have_attributes(length: 1)
+          end
+        end
+
+        context ':when duplicated key but different folder' do
+          before do
+            instance.add(:app, 'abc')
+            instance.add(:app, 'xyz')
+          end
+
+          subject { instance.folders }
+
+          it do
+            # Last in, wins
+            is_expected
+              .to  include(app: 'xyz')
+              .and have_attributes(length: 1)
+          end
+        end
+
         context ':package folder is aliased to :app folder' do
           before { instance.add(:package, :app) }
 

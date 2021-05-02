@@ -35,6 +35,7 @@ RSpec.describe KType::LayeredFolders do
       instance.add(:global    , global_template_folder)
       instance.add(:domain    , domain_template_folder)
       instance.add(:app       , app_template_folder)
+      instance.add(:app_abc   , :app, 'a', 'b', 'c', 'this-should-not-be-here')
       instance.add(:app_abc   , :app, 'a', 'b', 'c')
     end
 
