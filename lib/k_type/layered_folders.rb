@@ -1,17 +1,6 @@
 # frozen_string_literal: true
 
 module KType
-  #
-  # Named folders makes sense for generated/output folders because you may want
-  # more than one type of location to generate output.
-  #
-  # Don't confuse multiple named output folders with sub-paths, when you want to
-  # build up a file name in a child folder, you can do that as part of building
-  # the filename.
-  #
-  # The idea behind named folders is for when you have two or more totally different
-  # outputs that (may live in the a similar location) or live in different locations.
-
   # Layered folders allow files to be found in any of the searchable folders
   #
   # They derive from and thus work just like named folders in that they allow folders
@@ -71,8 +60,13 @@ module KType
     def add(folder_key, *folder_parts)
       folder = super(folder_key, *folder_parts)
 
-      ordered_keys.prepend(folder_key)
-      ordered_folders.prepend(folder)
+      index = ordered_keys.find_index(folder_key)
+      if index
+        ordered_folders[index] = folder
+      else
+        ordered_keys.prepend(folder_key)
+        ordered_folders.prepend(folder)
+      end
 
       folder
     end
