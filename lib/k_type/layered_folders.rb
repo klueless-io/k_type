@@ -94,5 +94,15 @@ module KType
         }
       }.merge(@folders)
     end
+
+
+    def debug(title: 'layered folders')
+      log.section_heading title
+
+      ordered_keys.each do |key|
+        folder = folders[key]
+        log.kv key.to_s, folder
+      end
+    end
   end
 end

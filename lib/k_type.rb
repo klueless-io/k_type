@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'k_log'
 require 'k_type/version'
 require 'k_type/named_folders'
 require 'k_type/layered_folders'

@@ -29,6 +29,18 @@ RSpec.describe KType::LayeredFolders do
     end
   end
 
+
+  fdescribe '#debug' do
+    subject { instance }
+
+    before do
+      instance.add(:fallback  , fallback_folder)
+      instance.add(:global    , global_template_folder)
+    end
+
+    it { subject.debug } # (title: 'custom title')
+  end
+
   describe '#add' do
     before do
       instance.add(:fallback  , fallback_folder)
