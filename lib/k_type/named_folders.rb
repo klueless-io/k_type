@@ -34,6 +34,8 @@ module KType
   #
   # Do I need to support :default?
   class NamedFolders
+    include KLog::Logging
+
     attr_reader :folders
 
     attr_reader :current
@@ -91,6 +93,15 @@ module KType
 
     def to_h
       @folders
+    end
+
+    def debug(title: 'named folders')
+      log.section_heading title
+
+      folders.each_key do |key|
+        folder = folders[key]
+        log.kv key.to_s, folder
+      end
     end
 
     private

@@ -21,6 +21,17 @@ RSpec.describe KType::NamedFolders do
     end
   end
 
+  describe '#debug' do
+    subject { instance }
+
+    before do
+      instance.add(:app, target_folder)
+      instance.add(:webpack, instance.join(:app, 'config'))
+    end
+
+    it { subject.debug } # (title: 'custom title')
+  end
+
   describe '#add' do
     context 'when no folder supplied' do
       subject { instance.add(:app) }
