@@ -56,6 +56,12 @@ module KType
       @current = folder_key
     end
 
+    def current_folder
+      return nil unless @current
+
+      get(@current)
+    end
+
     # Add support for file_parts
     def add(folder_key, *folder_parts)
       # get a predefined folder by symbol
