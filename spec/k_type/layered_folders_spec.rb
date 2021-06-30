@@ -29,8 +29,7 @@ RSpec.describe KType::LayeredFolders do
     end
   end
 
-
-  fdescribe '#debug' do
+  describe '#debug' do
     subject { instance }
 
     before do

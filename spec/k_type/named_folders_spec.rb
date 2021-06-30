@@ -232,6 +232,39 @@ RSpec.describe KType::NamedFolders do
     end
   end
 
+  describe '.current_folder' do
+    subject { instance.current_folder }
+
+    context 'no folders' do
+      it { is_expected.to be_nil }
+    end
+
+    context 'when first folder added' do
+      before { instance.add(:app, target_folder) }
+
+      it { is_expected.to end_with('spec/sample-assets/target') }
+
+      context 'when second folder added' do
+        before { instance.add(:webpack, instance.join(:app, 'config')) }
+
+        it { is_expected.to end_with('spec/sample-assets/target') }
+
+        describe '.current=' do
+          context 'when valid folder key' do
+            before { instance.current = :webpack }
+
+            it { is_expected.to end_with('spec/sample-assets/target/config') }
+          end
+          context 'when invalid folder key' do
+            subject { instance.current = :xxx }
+
+            it { expect { subject }.to raise_error(KType::Error, 'Folder not found, this folder key not found: xxx') }
+          end
+        end
+      end
+    end
+  end
+
   describe '#clone' do
     let(:copy) { instance.clone }
 
