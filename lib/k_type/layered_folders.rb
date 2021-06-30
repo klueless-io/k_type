@@ -95,7 +95,6 @@ module KType
       }.merge(@folders)
     end
 
-
     def debug(title: 'layered folders')
       log.section_heading title
 
