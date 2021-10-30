@@ -2,14 +2,13 @@
 
 require 'k_log'
 require 'k_type/version'
+require 'k_type/composite'
 require 'k_type/named_folders'
 require 'k_type/layered_folders'
 
 module KType
   # raise KType::Error, 'Sample message'
   class Error < StandardError; end
-
-  # Your code goes here...
 end
 
 if ENV['KLUE_DEBUG']&.to_s&.downcase == 'true'
