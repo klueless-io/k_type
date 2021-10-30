@@ -9,8 +9,6 @@ require 'k_type/layered_folders'
 module KType
   # raise KType::Error, 'Sample message'
   class Error < StandardError; end
-
-  # Your code goes here...
 end
 
 if ENV['KLUE_DEBUG']&.to_s&.downcase == 'true'
