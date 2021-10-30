@@ -102,6 +102,7 @@ module KType
         folder = folders[key]
         log.kv key.to_s, folder
       end
+      nil
     end
   end
 end

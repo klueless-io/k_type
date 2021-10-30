@@ -104,10 +104,14 @@ module KType
     def debug(title: 'named folders')
       log.section_heading title
 
+      log.kv 'current', current
+      log.info ''
+
       folders.each_key do |key|
         folder = folders[key]
         log.kv key.to_s, folder
       end
+      nil
     end
 
     private
