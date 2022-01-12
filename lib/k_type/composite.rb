@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# TODO: future
+# This pattern would be great as a configurable generic class
+#
+# children could be renamed as:
+# - directors
+# - components
+# - elements
+#
+# It may also be relevant to separate parent form children
+
+# Parent director allows upwards navigation
+# attr_reader :parent
+# Children directors allow downwards navigation plus access to sub-directors
+# attr_reader :children
+
 module KType
   # Composite Design Pattern: https://refactoring.guru/design-patterns/composite
   module Composite
@@ -13,7 +28,7 @@ module KType
       @parent = parent
     end
 
-    def navigate_up
+    def navigate_parent
       parent.nil? ? self : parent
     end
 
@@ -22,11 +37,15 @@ module KType
     end
 
     # Implement as needed (Implement is not provided here because you may want to use hash or array and have additional logic)
-    # def add_component
+    # def reset_children
     # end
-    # def remove_component
+    # def add_child
     # end
-    # def get_childern
+    # def remove_child
+    # end
+    # def get_children
+    # end
+    # def has_child?
     # end
     # def execute
     # end

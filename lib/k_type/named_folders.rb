@@ -97,6 +97,10 @@ module KType
       @folders.keys
     end
 
+    def folder_paths
+      @folders.values
+    end
+
     def to_h
       @folders
     end
