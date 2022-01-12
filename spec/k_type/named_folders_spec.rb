@@ -199,6 +199,24 @@ RSpec.describe KType::NamedFolders do
     end
   end
 
+  describe '.folder_paths' do
+    subject { instance.folder_paths }
+
+    context 'add some folders' do
+      before do
+        instance.add(:app, target_folder)
+        instance.add(:webpack, instance.join(:app, 'config'))
+      end
+
+      it do
+        is_expected.to include(
+          include(File.join(sample_assets_folder, 'target')),
+          include(File.join(sample_assets_folder, 'target/config'))
+        )
+      end
+    end
+  end
+
   describe '.current' do
     subject { instance.current }
 
