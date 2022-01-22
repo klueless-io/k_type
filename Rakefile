@@ -10,26 +10,26 @@ require 'rspec/core/rake_task'
 require 'pry'
 require 'k_type/version'
 
-# RSpec::Core::RakeTask.new(:spec)
+RSpec::Core::RakeTask.new(:spec)
 
-# require 'rake/extensiontask'
+require 'rake/extensiontask'
 
-# desc 'Compile all the extensions'
-# task build: :compile
+desc 'Compile all the extensions'
+task build: :compile
 
-# Rake::ExtensionTask.new('k_type') do |ext|
-#   ext.lib_dir = 'lib/k_type'
-# end
+Rake::ExtensionTask.new('k_type') do |ext|
+  ext.lib_dir = 'lib/k_type'
+end
 
-# desc 'Publish the gem to RubyGems.org'
-# task :publish do
-#   system 'gem build'
-#   system "gem push #{GEM_NAME}-#{KType::VERSION}.gem"
-# end
+desc 'Publish the gem to RubyGems.org'
+task :publish do
+  system 'gem build'
+  system "gem push #{GEM_NAME}-#{KType::VERSION}.gem"
+end
 
-# desc 'Remove old *.gem files'
-# task :clean do
-#   system 'rm *.gem'
-# end
+desc 'Remove old *.gem files'
+task :clean do
+  system 'rm *.gem'
+end
 
-# task default: %i[clobber compile spec]
+task default: %i[clobber compile spec]
