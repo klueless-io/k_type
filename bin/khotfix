@@ -11,8 +11,6 @@
 # HELPERS
 clear
 
-echo 'XXXXXXXXXXXXXXXXXXX'
-
 l_heading ()
 {
   heading=$1
